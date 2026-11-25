@@ -1,10 +1,10 @@
 PY := .venv/bin/python
 LATEST = $(shell cat results/LATEST)
 
-.PHONY: install test lint demo chat smoke eval report all data
+.PHONY: install test lint demo chat smoke eval report all data serve web web-check compose-up compose-down kind-up load-test kind-down
 
-install:            ## create .venv and install the package with dev tools
-	uv venv && uv pip install -e '.[dev]'
+install:            ## create .venv and install the package with dev tools and the HTTP server
+	uv venv && uv pip install -e '.[dev,server]'
 
 lint:
 	.venv/bin/ruff check src evals scripts tests && .venv/bin/ruff format --check src evals scripts tests
@@ -33,3 +33,27 @@ all: test demo eval ## everything, in one command
 data:               ## rebuild data/ from GitHub (needs an authenticated `gh`), then the eval cases
 	$(PY) scripts/build_data.py
 	$(PY) scripts/build_cases.py
+
+serve:              ## HTTP API with SSE on :8000 (TRIAGE_MODEL picks the model)
+	.venv/bin/uvicorn triage_agent.server:app --port 8000
+
+web:                ## frontend dev server on :5173, proxying /api to :8000
+	npm --prefix web ci && npm --prefix web run dev
+
+web-check:          ## frontend typecheck + production build
+	npm --prefix web ci && npm --prefix web run build
+
+compose-up:         ## gateway + api + web on http://localhost:8080 (needs GEMINI_API_KEY or ZHIPUAI_API_KEY)
+	docker compose up --build -d
+
+compose-down:
+	docker compose down
+
+kind-up:            ## kind cluster + ingress-nginx + metrics-server + the app, one command
+	deploy/kind_up.sh
+
+load-test:          ## k6 load through the Ingress while recording the HPA (needs kind-up)
+	deploy/load_test.sh
+
+kind-down:
+	kind delete cluster --name triage-agent
