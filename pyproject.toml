@@ -15,7 +15,8 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=8", "ruff>=0.6"]
+server = ["fastapi>=0.115", "uvicorn[standard]>=0.30"]
+dev = ["pytest>=8", "ruff>=0.6", "httpx>=0.27", "triage-agent[server]"]
 
 [project.scripts]
 triage-agent = "triage_agent.cli:main"
