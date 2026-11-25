@@ -1,0 +1,72 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+  labels: {app: triage-agent, component: api}
+spec:
+  replicas: 1  # the HPA owns the replica count once applied
+  selector:
+    matchLabels: {app: triage-agent, component: api}
+  template:
+    metadata:
+      labels: {app: triage-agent, component: api}
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        seccompProfile: {type: RuntimeDefault}
+      containers:
+        - name: api
+          image: triage-agent-api:0.1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - {name: http, containerPort: 8000}
+          env:
+            - name: TRIAGE_MODEL
+              value: gemini-3.5-flash-lite
+          envFrom:
+            # API keys (GEMINI_API_KEY / ZHIPUAI_API_KEY) come from a Secret created at deploy time;
+            # they are never baked into the image or committed (README section 6.4).
+            - secretRef: {name: triage-agent-keys}
+          readinessProbe:  # ready = model configured and MCP tools loaded
+            httpGet: {path: /readyz, port: http}
+            periodSeconds: 5
+            failureThreshold: 3
+          livenessProbe:  # alive = the process answers
+            httpGet: {path: /healthz, port: http}
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            failureThreshold: 3
+          resources:
+            requests: {cpu: 100m, memory: 256Mi}
+            limits: {cpu: 500m, memory: 512Mi}
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: {drop: [ALL]}
+          volumeMounts:
+            - {name: tmp, mountPath: /tmp}
+      volumes:
+        - {name: tmp, emptyDir: {}}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: api
+spec:
+  type: ClusterIP
+  selector: {app: triage-agent, component: api}
+  ports:
+    - {name: http, port: 8000, targetPort: http}
+---
+# Same pods, separate Service for the chat route: ingress-nginx keeps load-balancing settings per
+# Service, so the consistent hashing of chat requests does not spread to the stateless endpoints.
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-chat
+spec:
+  type: ClusterIP
+  selector: {app: triage-agent, component: api}
+  ports:
+    - {name: http, port: 8000, targetPort: http}

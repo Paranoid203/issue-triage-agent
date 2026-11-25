@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+  labels: {app: triage-agent, component: web}
+spec:
+  replicas: 1
+  selector:
+    matchLabels: {app: triage-agent, component: web}
+  template:
+    metadata:
+      labels: {app: triage-agent, component: web}
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 101
+        seccompProfile: {type: RuntimeDefault}
+      containers:
+        - name: web
+          image: triage-agent-web:0.1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - {name: http, containerPort: 8080}
+          readinessProbe:
+            httpGet: {path: /, port: http}
+            periodSeconds: 5
+          livenessProbe:
+            httpGet: {path: /, port: http}
+            periodSeconds: 10
+          resources:
+            requests: {cpu: 20m, memory: 32Mi}
+            limits: {cpu: 200m, memory: 64Mi}
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities: {drop: [ALL]}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web
+spec:
+  type: ClusterIP
+  selector: {app: triage-agent, component: web}
+  ports:
+    - {name: http, port: 8080, targetPort: http}

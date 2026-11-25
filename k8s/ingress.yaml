@@ -1,0 +1,42 @@
+# Agent turns: Server-Sent Events, so no buffering and long reads. Conversation memory lives in the
+# api process, so requests are hashed on the path (/api/threads/<thread_id>/messages) and a thread
+# keeps landing on the same pod.
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: chat
+  annotations:
+    nginx.ingress.kubernetes.io/upstream-hash-by: "$uri"
+    nginx.ingress.kubernetes.io/proxy-buffering: "off"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "300"
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          - path: /api/threads
+            pathType: Prefix
+            backend:
+              service: {name: api-chat, port: {name: http}}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: site
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service: {name: api, port: {name: http}}
+          - path: /readyz
+            pathType: Exact
+            backend:
+              service: {name: api, port: {name: http}}
+          - path: /
+            pathType: Prefix
+            backend:
+              service: {name: web, port: {name: http}}

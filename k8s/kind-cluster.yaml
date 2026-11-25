@@ -1,0 +1,17 @@
+# Local cluster for trying the manifests: kind create cluster --config k8s/kind-cluster.yaml
+# The ingress controller binds the node's port 80, published on the host as 127.0.0.1:18080.
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: triage-agent
+nodes:
+  - role: control-plane
+    kubeadmConfigPatches:
+      - |
+        kind: InitConfiguration
+        nodeRegistration:
+          kubeletExtraArgs:
+            node-labels: "ingress-ready=true"
+    extraPortMappings:
+      - containerPort: 80
+        hostPort: 18080
+        listenAddress: "127.0.0.1"
