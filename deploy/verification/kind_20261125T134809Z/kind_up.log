@@ -1,0 +1,69 @@
+[13:45:30] creating kind cluster triage-agent
+Creating cluster "triage-agent" ...
+ • Ensuring node image (kindest/node:v1.32.2) 🖼  ...
+ ✓ Ensuring node image (kindest/node:v1.32.2) 🖼
+ • Preparing nodes 📦   ...
+ ✓ Preparing nodes 📦 
+ • Writing configuration 📜  ...
+ ✓ Writing configuration 📜
+ • Starting control-plane 🕹️  ...
+ ✓ Starting control-plane 🕹️
+ • Installing CNI 🔌  ...
+ ✓ Installing CNI 🔌
+ • Installing StorageClass 💾  ...
+ ✓ Installing StorageClass 💾
+ • Waiting ≤ 2m0s for control-plane = Ready ⏳  ...
+ ✓ Waiting ≤ 2m0s for control-plane = Ready ⏳
+ • Ready after 17s 💚
+Set kubectl context to "kind-triage-agent"
+You can now use your cluster with:
+
+kubectl cluster-info --context kind-triage-agent
+
+Not sure what to do next? 😅  Check out https://kind.sigs.k8s.io/docs/user/quick-start/
+[13:46:21] building images
+sha256:a07fc465af22d7f46d1c1427e8ff02c53c11a4418c8973e40c8147ddb27462ae
+sha256:783717088bd4f0f74b0477342ef93e26178fba82c9c467ef17da2c6f63aeb5a7
+[13:46:52] loading images into the cluster
+Image: "triage-agent-api:0.1.0" with ID "sha256:a07fc465af22d7f46d1c1427e8ff02c53c11a4418c8973e40c8147ddb27462ae" not yet present on node "triage-agent-control-plane", loading...
+Image: "triage-agent-web:0.1.0" with ID "sha256:783717088bd4f0f74b0477342ef93e26178fba82c9c467ef17da2c6f63aeb5a7" not yet present on node "triage-agent-control-plane", loading...
+[13:47:09] installing ingress-nginx controller-v1.12.1 and metrics-server v0.7.2
+Waiting for deployment "ingress-nginx-controller" rollout to finish: 0 of 1 updated replicas are available...
+deployment "ingress-nginx-controller" successfully rolled out
+Waiting for deployment "metrics-server" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "metrics-server" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "metrics-server" rollout to finish: 1 old replicas are pending termination...
+deployment "metrics-server" successfully rolled out
+[13:47:35] creating the API-key Secret (values read from the environment, not from the command line)
+[13:47:35] deploying the app
+namespace/triage-agent unchanged
+service/api created
+service/api-chat created
+service/web created
+deployment.apps/api created
+deployment.apps/web created
+horizontalpodautoscaler.autoscaling/api created
+ingress.networking.k8s.io/chat created
+ingress.networking.k8s.io/site created
+Waiting for deployment "api" rollout to finish: 0 of 1 updated replicas are available...
+deployment "api" successfully rolled out
+deployment "web" successfully rolled out
+[13:47:53] smoke check through the Ingress at http://127.0.0.1:18080
+{"status":"ready","tools":["search_docs","submit_triage","search_issues","get_issue"]}
+web index: HTTP 200
+NAME                       READY   STATUS    RESTARTS   AGE
+pod/api-7f7ff857d6-zgvw5   1/1     Running   0          19s
+pod/web-6c674fc6c8-f2t8s   1/1     Running   0          19s
+
+NAME               TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+service/api        ClusterIP   10.96.61.246    <none>        8000/TCP   19s
+service/api-chat   ClusterIP   10.96.238.240   <none>        8000/TCP   19s
+service/web        ClusterIP   10.96.159.19    <none>        8080/TCP   19s
+
+NAME                             CLASS   HOSTS   ADDRESS   PORTS   AGE
+ingress.networking.k8s.io/chat   nginx   *                 80      19s
+ingress.networking.k8s.io/site   nginx   *                 80      19s
+
+NAME                                      REFERENCE        TARGETS              MINPODS   MAXPODS   REPLICAS   AGE
+horizontalpodautoscaler.autoscaling/api   Deployment/api   cpu: <unknown>/60%   1         5         1          19s
+exit=0 kind_up took 145s

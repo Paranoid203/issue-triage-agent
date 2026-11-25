@@ -1,0 +1,39 @@
+## POST /api/threads/kind1/messages via Ingress
+  15.65s  event: node
+  15.65s  data: {"name": "planner"}
+  15.65s  
+  15.65s  event: plan
+  15.65s  data: {"subtasks": ["How do I make a Pydantic model immutable after it is created?"]}
+  15.65s  
+  30.51s  event: node
+  30.51s  data: {"name": "executor"}
+  30.51s  
+  30.51s  event: tool_call
+  30.51s  data: {"id": "call_10971896183201591830", "name": "search_docs", "args": {"query": "immutable model frozen configuration Pydantic"}, "source": "local"}
+  30.51s  
+  30.58s  event: node
+  30.58s  data: {"name": "tools"}
+  30.58s  
+  30.58s  event: tool_result
+  30.58s  data: {"id": "call_10971896183201591830", "name": "search_docs", "ok": true, "result": [{"chunk_id": "docs/concepts/models.md#41", "path": "docs/concepts/models.md", "heading": "Faux immutability"}, {"chunk_id": "docs/concepts/fields.md#17", "path": "docs/concepts/fields.md", "heading": "Immutability"}, {"chunk_id": "docs/integrations/mypy.md#5", "path": "docs/integrations/mypy.md", "heading": "Support for frozen models"}, {"chunk_id": "docs/errors/validation_errors.md#45", "path": "docs/errors/validation_errors.md", "heading": "`frozen_instance`"}, {"chunk_id": "docs/integrations/visual_studio_code.md#12", "path": "docs/integrations/visual_studio_code.md", "heading": "Config in class arguments"}]}
+  30.58s  
+  46.09s  event: node
+  46.09s  data: {"name": "executor"}
+  46.09s  
+  46.09s  event: tool_call
+  46.09s  data: {"id": "call_7508782909680626011", "name": "submit_triage", "args": {"references": ["docs/concepts/models.md#41", "docs/concepts/fields.md#17", "docs/integrations/visual_studio_code.md#12"], "subtask": 1, "type": "question", "duplicate_of": null, "answer": "To make a Pydantic model immutable after creation, you can set `frozen=True` in the model's configuration (`model_config = ConfigDict(frozen=True)` or via class keyword arguments like `class MyModel(BaseModel, frozen=True)`). When a model is frozen, attempting to assign a new value to or delete any of its attributes will raise a `ValidationError`.\n\nAlternatively, you can make individual fields immutable using `Field(frozen=True)` or by using `typing.Final`."}, "source": "local"}
+  46.09s  
+  46.09s  event: node
+  46.09s  data: {"name": "tools"}
+  46.09s  
+  46.09s  event: tool_result
+  46.09s  data: {"id": "call_7508782909680626011", "name": "submit_triage", "ok": true, "result": "recorded subtask 1"}
+  46.09s  
+  46.09s  event: submission
+  46.09s  data: {"subtask": 1, "type": "question", "duplicate_of": null, "answer": "To make a Pydantic model immutable after creation, you can set `frozen=True` in the model's configuration (`model_config = ConfigDict(frozen=True)` or via class keyword arguments like `class MyModel(BaseModel, frozen=True)`). When a model is frozen, attempting to assign a new value to or delete any of its attributes will raise a `ValidationError`.\n\nAlternatively, you can make individual fields immutable using `Field(frozen=True)` or by using `typing.Final`.", "references": ["docs/concepts/models.md#41", "docs/concepts/fields.md#17", "docs/integrations/visual_studio_code.md#12"]}
+  46.09s  
+  46.09s  event: done
+  46.09s  data: {"user": "How do I make a model immutable after it is created?", "plan": ["How do I make a Pydantic model immutable after it is created?"], "submissions": [{"subtask": 1, "type": "question", "duplicate_of": null, "answer": "To make a Pydantic model immutable after creation, you can set `frozen=True` in the model's configuration (`model_config = ConfigDict(frozen=True)` or via class keyword arguments like `class MyModel(BaseModel, frozen=True)`). When a model is frozen, attempting to assign a new value to or delete any of its attributes will raise a `ValidationError`.\n\nAlternatively, you can make individual fields immutable using `Field(frozen=True)` or by using `typing.Final`.", "references": ["docs/concepts/models.md#41", "docs/concepts/fields.md#17", "docs/integrations/visual_studio_code.md#12"]}], "final_text": "", "stop_reason": "closed", "llm_calls": 3, "input_tokens": 2854, "output_tokens": 228, "seconds": 46.09}
+  46.09s  
+  46.09s  
+  46.09s  # http 200, time_starttransfer 0.003586s, total 46.093412s

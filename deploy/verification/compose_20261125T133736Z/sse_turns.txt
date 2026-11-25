@@ -1,0 +1,91 @@
+# docker compose, gateway :18081, thread curl20261125T133736Z, Wed Nov 25 13:37:36 UTC 2026
+## POST /api/threads/curl20261125T133736Z/messages  text=Two things: how do I drop None values in model_dump? And is the validate_call memory leak a known issue?
+  15.97s  event: node
+  15.97s  data: {"name": "planner"}
+  15.97s  
+  15.97s  event: plan
+  15.97s  data: {"subtasks": ["How do I drop None values in model_dump?", "Is the validate_call memory leak a known issue?"]}
+  15.97s  
+  31.14s  event: node
+  31.14s  data: {"name": "executor"}
+  31.14s  
+  31.14s  event: tool_call
+  31.14s  data: {"id": "call_1179782924458161974", "name": "search_docs", "args": {"query": "model_dump exclude_none"}, "source": "local"}
+  31.14s  
+  31.14s  event: tool_call
+  31.14s  data: {"id": "call_1179782924458164179", "name": "search_issues", "args": {"query": "validate_call memory leak"}, "source": "mcp"}
+  31.14s  
+  31.34s  event: node
+  31.34s  data: {"name": "tools"}
+  31.34s  
+  31.34s  event: tool_result
+  31.34s  data: {"id": "call_1179782924458161974", "name": "search_docs", "ok": true, "result": [{"chunk_id": "docs/concepts/serialization.md#30", "path": "docs/concepts/serialization.md", "heading": "Excluding and including fields based on their value"}, {"chunk_id": "docs/concepts/serialization.md#29", "path": "docs/concepts/serialization.md", "heading": "Excluding and including specific fields"}, {"chunk_id": "docs/concepts/fields.md#18", "path": "docs/concepts/fields.md", "heading": "Excluding fields"}, {"chunk_id": "docs/concepts/serialization.md#27", "path": "docs/concepts/serialization.md", "heading": "As parameters to the serialization methods"}, {"chunk_id": "docs/why.md#5", "path": "docs/why.md", "heading": "Serialization"}]}
+  31.34s  
+  31.34s  event: tool_result
+  31.34s  data: {"id": "call_1179782924458164179", "name": "search_issues", "ok": true, "result": [{"number": 7687, "title": "validate_call on instance method cause memory leak", "state": "closed", "created_at": "2023-09-28", "labels": ["bug V2"]}, {"number": 8146, "title": "validate_call on method + inheritance bug", "state": "closed", "created_at": "2023-11-15", "labels": ["bug V2"]}, {"number": 12446, "title": "Memory leak in model_rebuild(force=True)", "state": "closed", "created_at": "2025-10-24", "labels": ["bug V2"]}, {"number": 11665, "title": "validate_call is missing a check for the classmethod decorator.", "state": "closed", "created_at": "2025-04-01", "labels": ["feature request"]}, {"number": 11095, "title": "Outdated documentation or unexpected behavior in use of the `Field` with `@validate_call`", "state": "closed", "created_at": "2024-12-12", "labels": ["documentation"]}]}
+  31.34s  
+  46.01s  event: node
+  46.01s  data: {"name": "executor"}
+  46.01s  
+  46.01s  event: tool_call
+  46.01s  data: {"id": "call_9581669210472906264", "name": "get_issue", "args": {"number": 7687}, "source": "mcp"}
+  46.01s  
+  46.01s  event: node
+  46.01s  data: {"name": "tools"}
+  46.01s  
+  46.01s  event: tool_result
+  46.01s  data: {"id": "call_9581669210472906264", "name": "get_issue", "ok": true, "result": {"number": 7687, "title": "validate_call on instance method cause memory leak", "state": "closed", "created_at": "2023-09-28", "labels": ["bug V2"]}}
+  46.01s  
+  63.67s  event: node
+  63.67s  data: {"name": "executor"}
+  63.67s  
+  63.67s  event: tool_call
+  63.67s  data: {"id": "call_2563131857808278779", "name": "submit_triage", "args": {"references": ["docs/concepts/serialization.md#30"], "type": "question", "answer": "You can drop `None` values when using `model_dump()` by passing the parameter `exclude_none=True`:\n\n```python\nmodel.model_dump(exclude_none=True)\n```", "subtask": 1}, "source": "local"}
+  63.67s  
+  63.67s  event: tool_call
+  63.67s  data: {"id": "call_2563131857808279866", "name": "submit_triage", "args": {"type": "question", "answer": "Yes, memory leaks related to `@validate_call` (such as on instance methods preventing garbage collection) have been reported and addressed in issues like [#7687](https://github.com/pydantic/pydantic/issues/7687), which is now closed.", "subtask": 2, "references": ["lc_cae7e2df-5468-4666-93dc-5bb778f02fbb"]}, "source": "local"}
+  63.67s  
+  63.67s  event: node
+  63.67s  data: {"name": "tools"}
+  63.67s  
+  63.67s  event: tool_result
+  63.67s  data: {"id": "call_2563131857808278779", "name": "submit_triage", "ok": true, "result": "recorded subtask 1"}
+  63.67s  
+  63.67s  event: submission
+  63.67s  data: {"subtask": 1, "type": "question", "duplicate_of": null, "answer": "You can drop `None` values when using `model_dump()` by passing the parameter `exclude_none=True`:\n\n```python\nmodel.model_dump(exclude_none=True)\n```", "references": ["docs/concepts/serialization.md#30"]}
+  63.67s  
+  63.67s  event: tool_result
+  63.67s  data: {"id": "call_2563131857808279866", "name": "submit_triage", "ok": true, "result": "recorded subtask 2"}
+  63.67s  
+  63.67s  event: submission
+  63.67s  data: {"subtask": 2, "type": "question", "duplicate_of": null, "answer": "Yes, memory leaks related to `@validate_call` (such as on instance methods preventing garbage collection) have been reported and addressed in issues like [#7687](https://github.com/pydantic/pydantic/issues/7687), which is now closed.", "references": ["lc_cae7e2df-5468-4666-93dc-5bb778f02fbb"]}
+  63.67s  
+  63.67s  event: done
+  63.67s  data: {"user": "Two things: how do I drop None values in model_dump? And is the validate_call memory leak a known issue?", "plan": ["How do I drop None values in model_dump?", "Is the validate_call memory leak a known issue?"], "submissions": [{"subtask": 1, "type": "question", "duplicate_of": null, "answer": "You can drop `None` values when using `model_dump()` by passing the parameter `exclude_none=True`:\n\n```python\nmodel.model_dump(exclude_none=True)\n```", "references": ["docs/concepts/serialization.md#30"]}, {"subtask": 2, "type": "question", "duplicate_of": null, "answer": "Yes, memory leaks related to `@validate_call` (such as on instance methods preventing garbage collection) have been reported and addressed in issues like [#7687](https://github.com/pydantic/pydantic/issues/7687), which is now closed.", "references": ["lc_cae7e2df-5468-4666-93dc-5bb778f02fbb"]}], "final_text": "", "stop_reason": "closed", "llm_calls": 4, "input_tokens": 7812, "output_tokens": 301, "seconds": 63.68}
+  63.67s  
+  63.67s  
+  63.67s  # http 200, time_starttransfer 0.008968s, total 63.683799s
+## POST /api/threads/curl20261125T133736Z/messages  text=When was the issue you linked opened, and is it still open?
+  12.56s  event: node
+  12.56s  data: {"name": "planner"}
+  12.56s  
+  12.56s  event: plan
+  12.56s  data: {"subtasks": ["When was the validate_call memory leak issue (#7687) opened?", "Is the validate_call memory leak issue (#7687) still open?"]}
+  12.56s  
+  88.83s  event: node
+  88.83s  data: {"name": "executor"}
+  88.83s  
+  88.83s  event: tool_call
+  88.83s  data: {"id": "call_718306404656300311", "name": "get_issue", "args": {"number": 7687}, "source": "mcp"}
+  88.83s  
+  88.84s  event: node
+  88.84s  data: {"name": "tools"}
+  88.84s  
+  88.84s  event: tool_result
+  88.84s  data: {"id": "call_718306404656300311", "name": "get_issue", "ok": true, "result": {"number": 7687, "title": "validate_call on instance method cause memory leak", "state": "closed", "created_at": "2023-09-28", "labels": ["bug V2"]}}
+  88.84s  
+ 254.63s  event: error
+ 254.63s  data: {"message": "GoogleAPIError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"}
+ 254.63s  
+ 254.63s  
+ 254.63s  # http 200, time_starttransfer 0.006860s, total 254.632922s

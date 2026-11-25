@@ -1,0 +1,29 @@
+# kind cluster triage-agent, Ingress 127.0.0.1:18080, Wed Nov 25 13:48:09 UTC 2026
+NAME                         STATUS   ROLES           AGE     VERSION   INTERNAL-IP    EXTERNAL-IP   OS-IMAGE                         KERNEL-VERSION         CONTAINER-RUNTIME
+triage-agent-control-plane   Ready    control-plane   2m10s   v1.32.2   172.30.134.2   <none>        Debian GNU/Linux 12 (bookworm)   6.1.0-56-cloud-amd64   containerd://2.0.2
+
+NAME                       READY   STATUS    RESTARTS   AGE   IP            NODE                         NOMINATED NODE   READINESS GATES
+pod/api-7f7ff857d6-zgvw5   1/1     Running   0          34s   10.244.0.10   triage-agent-control-plane   <none>           <none>
+pod/web-6c674fc6c8-f2t8s   1/1     Running   0          34s   10.244.0.11   triage-agent-control-plane   <none>           <none>
+
+NAME               TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE   SELECTOR
+service/api        ClusterIP   10.96.61.246    <none>        8000/TCP   34s   app=triage-agent,component=api
+service/api-chat   ClusterIP   10.96.238.240   <none>        8000/TCP   34s   app=triage-agent,component=api
+service/web        ClusterIP   10.96.159.19    <none>        8080/TCP   34s   app=triage-agent,component=web
+
+NAME                             CLASS   HOSTS   ADDRESS   PORTS   AGE
+ingress.networking.k8s.io/chat   nginx   *                 80      34s
+ingress.networking.k8s.io/site   nginx   *                 80      34s
+
+NAME                                      REFERENCE        TARGETS              MINPODS   MAXPODS   REPLICAS   AGE
+horizontalpodautoscaler.autoscaling/api   Deployment/api   cpu: <unknown>/60%   1         5         1          34s
+
+    Limits:
+      cpu:     500m
+      memory:  512Mi
+    Requests:
+      cpu:      100m
+      memory:   256Mi
+    Liveness:   http-get http://:http/healthz delay=10s timeout=1s period=10s #success=1 #failure=3
+    Readiness:  http-get http://:http/readyz delay=0s timeout=1s period=5s #success=1 #failure=3
+  Warning  Unhealthy  22s (x4 over 33s)  kubelet            Readiness probe failed: Get "http://10.244.0.10:8000/readyz": dial tcp 10.244.0.10:8000: connect: connection refused
