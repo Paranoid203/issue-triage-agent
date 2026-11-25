@@ -5,6 +5,7 @@ from __future__ import annotations
 import sys
 from contextlib import asynccontextmanager
 from functools import cache
+from pathlib import Path
 from typing import Literal
 
 from langchain_core.tools import BaseTool, tool
@@ -73,12 +74,12 @@ async def mcp_tools(tracker_before: int | None = None):
     `tracker_before` hides every issue filed at or after that issue number (used by the eval
     so the agent sees the tracker as it was when the reported issue was filed).
     """
-    connection = {
-        "transport": "stdio",
-        "command": sys.executable,
-        "args": ["-m", "triage_agent.mcp_server"],
-        "env": {"TRACKER_BEFORE": str(tracker_before)} if tracker_before else None,
-    }
+    # The MCP SDK starts stdio servers with a minimal environment (no PYTHONPATH), so point the child
+    # at this package explicitly; that also covers running from source, as the container image does.
+    env = {"PYTHONPATH": str(Path(__file__).resolve().parents[1])}
+    if tracker_before:
+        env["TRACKER_BEFORE"] = str(tracker_before)
+    connection = {"transport": "stdio", "command": sys.executable, "args": ["-m", "triage_agent.mcp_server"], "env": env}
     client = MultiServerMCPClient({"issues": connection})
     async with client.session("issues") as session:
         yield await load_mcp_tools(session)
