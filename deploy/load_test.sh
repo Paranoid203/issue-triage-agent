@@ -2,6 +2,8 @@
 # Load the stateless docs-search endpoint through the Ingress and record how the HPA reacts.
 # Writes <out>/load_<stamp>.log (k6 report) and <out>/hpa_<stamp>.tsv (one sample every 5 s).
 #   deploy/load_test.sh [duration=180s] [virtual_users=50] [out=deploy/verification]
+# PRE_SECONDS / POST_SECONDS set how long to sample before and after the load (default 30 / 360:
+# the HPA waits 5 minutes before scaling down).
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
@@ -28,14 +30,14 @@ PHASE=$(mktemp)
 echo before >"$PHASE"
 sample "$PHASE" >"$SAMPLES" &
 SAMPLER=$!
-trap 'kill $SAMPLER 2>/dev/null; rm -f "$PHASE"' EXIT
+trap 'kill $SAMPLER 2>/dev/null || true; rm -f "$PHASE"' EXIT
 
-sleep 30
+sleep "${PRE_SECONDS:-30}"
 echo load >"$PHASE"
 echo "[$(date -u +%H:%M:%S)] k6: $CONCURRENCY virtual users for $DURATION on /api/docs/search"
 k6 run --quiet -e VUS="$CONCURRENCY" -e DURATION="$DURATION" deploy/load_test.js 2>&1 | tee "$OUT/load_$STAMP.log"
 echo after >"$PHASE"
-echo "[$(date -u +%H:%M:%S)] load finished; sampling 6 more minutes to see the scale-down window start"
-sleep 360
+echo "[$(date -u +%H:%M:%S)] load finished; sampling ${POST_SECONDS:-360}s more to see the scale-down"
+sleep "${POST_SECONDS:-360}"
 kill $SAMPLER
 cat "$SAMPLES"
