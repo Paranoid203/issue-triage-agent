@@ -1,0 +1,43 @@
+{
+  "timestamp": "20261124T184625Z",
+  "cases": 40,
+  "goals": 50,
+  "repeats": 1,
+  "repeats_per_variant": {
+    "glm-4.7-flashx+rag": 1,
+    "gemini-3.5-flash-lite+rag": 1,
+    "gemini-3.5-flash-lite-no-rag": 1
+  },
+  "variants": [
+    {
+      "name": "glm-4.7-flashx+rag",
+      "model": "glm-4.7-flashx",
+      "use_docs": true,
+      "description": "Zhipu GLM-4.7-FlashX, docs search + MCP issue tools",
+      "planner": "v1",
+      "provider": "zhipu"
+    },
+    {
+      "name": "gemini-3.5-flash-lite+rag",
+      "model": "gemini-3.5-flash-lite",
+      "use_docs": true,
+      "description": "Google Gemini 3.5 Flash-Lite, docs + MCP issue tools",
+      "planner": "v1",
+      "provider": "google"
+    },
+    {
+      "name": "gemini-3.5-flash-lite-no-rag",
+      "model": "gemini-3.5-flash-lite",
+      "use_docs": false,
+      "description": "Google Gemini 3.5 Flash-Lite, MCP issue tools only",
+      "planner": "v1",
+      "provider": "google"
+    }
+  ],
+  "limit": null,
+  "budget_usd": 0.33,
+  "skipped_case_runs": 0,
+  "resumed": true,
+  "wall_seconds": 3004.1,
+  "total_cost_usd": 0.2339
+}

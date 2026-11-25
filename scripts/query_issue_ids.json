@@ -1,0 +1,127 @@
+[
+ {
+  "query": 9766,
+  "original": 5804
+ },
+ {
+  "query": 9348,
+  "original": 8071
+ },
+ {
+  "query": 8581,
+  "original": 7686
+ },
+ {
+  "query": 8239,
+  "original": 7687
+ },
+ {
+  "query": 8232,
+  "original": 8194
+ },
+ {
+  "query": 8152,
+  "original": 8146
+ },
+ {
+  "query": 7747,
+  "original": 7745
+ },
+ {
+  "query": 7655,
+  "original": 7645
+ },
+ {
+  "query": 1388,
+  "original": 655
+ },
+ {
+  "query": 1151,
+  "original": 655
+ },
+ {
+  "query": 1539,
+  "original": 619
+ },
+ {
+  "query": 1476,
+  "original": 288
+ },
+ {
+  "query": 1281,
+  "original": 1157
+ },
+ {
+  "query": 1447,
+  "original": 1423
+ },
+ {
+  "query": 1470,
+  "original": 1396
+ },
+ {
+  "query": 13647,
+  "original": null,
+  "type": "bug"
+ },
+ {
+  "query": 12347,
+  "original": null,
+  "type": "bug"
+ },
+ {
+  "query": 13074,
+  "original": null,
+  "type": "bug"
+ },
+ {
+  "query": 12273,
+  "original": null,
+  "type": "bug"
+ },
+ {
+  "query": 12492,
+  "original": null,
+  "type": "bug"
+ },
+ {
+  "query": 13173,
+  "original": null,
+  "type": "feature_request"
+ },
+ {
+  "query": 11551,
+  "original": null,
+  "type": "feature_request"
+ },
+ {
+  "query": 11622,
+  "original": null,
+  "type": "feature_request"
+ },
+ {
+  "query": 11606,
+  "original": null,
+  "type": "feature_request"
+ },
+ {
+  "query": 11561,
+  "original": null,
+  "type": "documentation"
+ },
+ {
+  "query": 13888,
+  "original": null,
+  "type": "documentation"
+ },
+ {
+  "query": 12775,
+  "original": null,
+  "type": "documentation"
+ },
+ {
+  "query": 12580,
+  "original": null,
+  "type": "question"
+ }
+]

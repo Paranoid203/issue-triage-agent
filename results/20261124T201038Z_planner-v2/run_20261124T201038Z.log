@@ -1,0 +1,92 @@
+2026-11-25 04:10:38,375 run 20261124T201038Z: 10 cases x 1 repeats x 1 variants
+2026-11-25 04:10:38,948 langchain-openai detected HTTP_PROXY, HTTPS_PROXY, ALL_PROXY, http_proxy, https_proxy, all_proxy and no explicit `http_socket_options` / `http_client` / `http_async_client` / `openai_proxy`; skipping the custom `httpx` transport so httpx's env-proxy auto-detection applies. Pass `http_socket_options=[...]` to opt back into kernel-level TCP keepalive tuning on top of the env proxy.
+2026-11-25 04:10:39,729 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:10:40,035 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:10:58,938 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:11:02,132 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:11:05,191 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:11:15,563 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:11:23,342 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:11:29,697 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:11:36,233 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:11:43,806 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:11:54,512 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:11:58,598 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:11:58,831 [glm-4.7-flashx+rag+planner-v2] 1/10 dup-9348 rep0 task=False closed=True goals=[False] spent=$0.002
+2026-11-25 04:12:00,156 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:12:02,221 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:12:04,132 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:12:07,668 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:12:07,878 [glm-4.7-flashx+rag+planner-v2] 2/10 dup-8239 rep0 task=False closed=True goals=[False] spent=$0.003
+2026-11-25 04:12:09,267 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:12:21,234 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:12:26,138 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:12:31,490 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:12:32,570 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:12:33,588 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:12:34,711 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:12:35,812 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:12:41,603 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:12:41,770 [glm-4.7-flashx+rag+planner-v2] 3/10 dup-8232 rep0 task=False closed=True goals=[False] spent=$0.006
+2026-11-25 04:12:48,946 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:12:59,574 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:13:01,278 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:13:02,408 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:13:06,118 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:13:08,325 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:13:11,873 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:13:12,056 [glm-4.7-flashx+rag+planner-v2] 4/10 dup-8152 rep0 task=False closed=True goals=[False] spent=$0.007
+2026-11-25 04:13:13,614 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:13:19,026 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:13:20,950 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:13:22,034 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:13:24,122 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:13:29,080 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:13:30,156 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:13:31,382 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:13:32,379 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:13:45,349 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:13:45,534 [glm-4.7-flashx+rag+planner-v2] 5/10 dup-8581 rep0 task=False closed=True goals=[False] spent=$0.010
+2026-11-25 04:13:46,997 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:13:53,156 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:14:01,335 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:14:08,634 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:14:11,991 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:14:19,954 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:14:21,087 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:14:21,251 [glm-4.7-flashx+rag+planner-v2] 6/10 dup-7747 rep0 task=False closed=True goals=[False] spent=$0.013
+2026-11-25 04:14:38,327 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:14:45,785 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:14:46,659 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:15:00,325 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:15:11,730 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:15:12,148 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:15:28,885 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:15:29,053 [glm-4.7-flashx+rag+planner-v2] 7/10 dup-1388 rep0 task=False closed=True goals=[False] spent=$0.013
+2026-11-25 04:15:30,397 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:15:34,551 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:15:36,537 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:15:40,423 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:15:40,575 [glm-4.7-flashx+rag+planner-v2] 8/10 dup-9766 rep0 task=False closed=True goals=[False] spent=$0.016
+2026-11-25 04:15:42,210 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:15:42,364 [glm-4.7-flashx+rag+planner-v2] 9/10 dup-7655 rep0 task=False closed=True goals=[False] spent=$0.019
+2026-11-25 04:15:46,568 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:15:57,865 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:16:23,911 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:16:30,563 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:16:33,783 HTTP Request: POST https://open.bigmodel.cn/api/paas/v4/chat/completions "HTTP/1.1 200 OK"
+2026-11-25 04:16:33,948 [glm-4.7-flashx+rag+planner-v2] 10/10 dup-1151 rep0 task=False closed=True goals=[False] spent=$0.021
+2026-11-25 04:16:33,951 
+| 变体 | 重复次数 | 任务执行准确率 | 流程闭环率 | 最终答案正确率 | 工具选择正确率 | 工具调用合法率 | 检索命中率 | 任务拆解正确率 | 误判重复率 | 每条用例平均耗时 (s) | 花费 (USD) |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| glm-4.7-flashx+rag+planner-v2 | 1 | 0.0% | 100.0% | 0.0% | 100.0% | 98.7% | 100.0% | 90.0% | n/a | 95.36 | 0.0205 |
+
+| 变体 | 单轮任务 执行准确率 / 闭环率 | 一句多任务 执行准确率 / 闭环率 | 多轮追问 执行准确率 / 闭环率 |
+|---|---|---|---|
+| glm-4.7-flashx+rag+planner-v2 | 0.0% / 100.0% | n/a / n/a | n/a / n/a |
+
+| 变体 | 文档问答 正确率 / 命中率 | 重复 issue 识别 正确率 / 命中率 | 新 issue 分类 正确率 | 追问事实 正确率 |
+|---|---|---|---|---|
+| glm-4.7-flashx+rag+planner-v2 | n/a / n/a | 0.0% / 100.0% | n/a | n/a |
+
+total cost $0.0205, wall 356s, outputs in results/20261124T201038Z_planner-v2

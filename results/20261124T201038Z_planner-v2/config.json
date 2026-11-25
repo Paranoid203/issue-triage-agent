@@ -1,0 +1,25 @@
+{
+  "timestamp": "20261124T201038Z_planner-v2",
+  "cases": 10,
+  "goals": 10,
+  "repeats": 1,
+  "repeats_per_variant": {
+    "glm-4.7-flashx+rag+planner-v2": 1
+  },
+  "variants": [
+    {
+      "name": "glm-4.7-flashx+rag+planner-v2",
+      "model": "glm-4.7-flashx",
+      "use_docs": true,
+      "description": "GLM-4.7-FlashX, docs + MCP issue tools, planner prompt v2",
+      "planner": "v2",
+      "provider": "zhipu"
+    }
+  ],
+  "limit": null,
+  "budget_usd": 0.4,
+  "skipped_case_runs": 0,
+  "resumed": true,
+  "wall_seconds": 0.0,
+  "total_cost_usd": 0.0205
+}

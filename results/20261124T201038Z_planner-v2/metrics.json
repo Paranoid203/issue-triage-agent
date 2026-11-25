@@ -1,0 +1,67 @@
+{
+  "glm-4.7-flashx+rag+planner-v2": {
+    "n_cases": 10,
+    "n_goals": 10,
+    "answer_accuracy": 0.2,
+    "task_success_rate": 0.2,
+    "flow_closure_rate": 1.0,
+    "tool_selection_accuracy": 1.0,
+    "valid_call_rate": 0.9865,
+    "retrieval_hit_rate": 1.0,
+    "decomposition_accuracy": 0.9,
+    "false_duplicate_rate": null,
+    "avg_tool_calls_per_case": 7.4,
+    "avg_seconds_per_case": 95.36,
+    "input_tokens": 272240,
+    "output_tokens": 3618,
+    "cost_usd": 0.0205,
+    "by_goal_kind": {
+      "docs_answer": {
+        "n": 0,
+        "accuracy": null,
+        "retrieval_hit": null
+      },
+      "duplicate": {
+        "n": 10,
+        "accuracy": 0.2,
+        "retrieval_hit": 1.0
+      },
+      "new_issue": {
+        "n": 0,
+        "accuracy": null,
+        "retrieval_hit": null
+      },
+      "fact": {
+        "n": 0,
+        "accuracy": null,
+        "retrieval_hit": null
+      }
+    },
+    "by_category": {
+      "single": {
+        "n": 10,
+        "task_success_rate": 0.2,
+        "flow_closure_rate": 1.0
+      },
+      "multi_task": {
+        "n": 0,
+        "task_success_rate": null,
+        "flow_closure_rate": null
+      },
+      "follow_up": {
+        "n": 0,
+        "task_success_rate": null,
+        "flow_closure_rate": null
+      }
+    },
+    "task_success_per_repeat": [
+      0.2
+    ],
+    "task_success_stdev": 0.0,
+    "infra_error_runs": 0,
+    "repeats": 1,
+    "model": "glm-4.7-flashx",
+    "provider": "zhipu",
+    "description": "GLM-4.7-FlashX, docs + MCP issue tools, planner prompt v2"
+  }
+}

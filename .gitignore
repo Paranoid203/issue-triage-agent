@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+.pytest_cache/
+.ruff_cache/
+results/*_smoke/
+
+# personal prep notes, not part of the project
+resume_lines.md
+interview_notes.md
