@@ -1,0 +1,8 @@
+# docker image ls on the build host, Wed Nov 25 14:02:07 UTC 2026
+REPOSITORY:TAG                                                                                              IMAGE ID       CREATED AT                      SIZE
+triage-agent-web:0.1.0                                                                                      783717088bd4   2026-11-25 13:46:52 +0000 UTC   48.4MB
+triage-agent-api:0.1.0                                                                                      a07fc465af22   2026-11-25 13:46:41 +0000 UTC   286MB
+
+# image user
+triage-agent-api:0.1.0 user=10001
+triage-agent-web:0.1.0 user=101
